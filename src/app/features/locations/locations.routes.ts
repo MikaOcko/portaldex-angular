@@ -1,5 +1,5 @@
 import type { Route } from '@angular/router';
-import { Locations } from './locations';
+import { Locations } from './pages/locations/locations';
 
 export const LOCATIONS_ROUTES: Route[] = [
   {
