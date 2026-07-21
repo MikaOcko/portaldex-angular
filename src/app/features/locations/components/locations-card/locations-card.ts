@@ -1,6 +1,6 @@
-import { Component, input, inject } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, input, inject, signal } from '@angular/core';
 import { Location } from '../../types/locations.type';
-import { LocationsService } from '../../services/locations-service';
+import { CharactersService } from '../../../characters/services/characters-service';
 import { Character } from '../../../characters/types/character.type';
 
 @Component({
@@ -9,29 +9,38 @@ import { Character } from '../../../characters/types/character.type';
   templateUrl: './locations-card.html',
   styleUrl: './locations-card.css',
 })
-export class LocationCard {
+export class LocationCard implements OnChanges {
   location = input.required<Location>();
-// -- Récupération des personnages au chargement (assisté par IA)
-  	private locationService = inject(LocationsService);
+// -- Récupération des personnages au chargement
+  	private characterService = inject(CharactersService);
 
-	residents: Character[] = [];
+	residents = signal<Character[]>([]);
 
-	ngOnInit() {
+	ngOnChanges(changes: SimpleChanges): void {   
+		if (!changes['location']) {
+      		return;
+   		}
 
-		const ids = this.location()
-		.residents
-		.map(url => url.split('/').pop())
-		.join(',');
+		const urls = this.location().residents;
 
-		if (!ids) return;
+		if (urls.length === 0) {
+			this.residents.set([]);
+			return;
+		}
 
-		this.locationService
-		.getResidents(ids)
-		.subscribe(residents => {
-			this.residents = Array.isArray(residents)
-			? residents
-			: [residents];
-		});
-  	}
+		const ids = urls
+			.map(url => url.split('/').pop())
+			.join(',');
+
+     	this.characterService.getResidentsOfLocation(ids).subscribe(result => {
+
+        this.residents.set(
+          Array.isArray(result)
+            ? result
+            : [result]
+        );
+    });
+
+  }
 }
 

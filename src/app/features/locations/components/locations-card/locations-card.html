@@ -51,11 +51,15 @@
 	<div class="flex flex-col mb-1">
 		<span class="text-slate-400">Residents</span>
 
-		@for (resident of residents; track resident.id) {
-			<span class="text-white">
-			{{ resident.name }}
-			</span>
-		}
+		@for (resident of residents(); track resident.id) {
+    <span class="text-white">
+      {{ resident.name }}
+    </span>
+  } @empty {
+    <span class="text-slate-500">
+      Aucun résident
+    </span>
+  }
 	</div>
 
   </div>
