@@ -32,13 +32,13 @@
     </div>
 
     <!-- Cards -->
-    <!-- <app-pagination [currentPage]="currentPage()" [totalPages]="totalPage()" (changePage)="changePage($event)"/>
+    <!-- <app-pagination [currentPage]="currentPage()" [totalPages]="totalPage()" (changePage)="changePage($event)"/>-->
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-      @for(character of characters(); track character.id) {
+      @for(episode of episodes(); track episode.id) {
 
-      <app-character-card [character]="character" />
-
+      <app-episode-card [episode]="episode" />
+      
       }
-    </div> -->
+    </div>
   </div>
 </section>

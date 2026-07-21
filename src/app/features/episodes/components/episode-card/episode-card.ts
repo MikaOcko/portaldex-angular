@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Episode } from '../../types/episodes.type';
 
 @Component({
   selector: 'app-episode-card',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './episode-card.css',
 })
 export class EpisodeCard {
-
+  episode = input.required<Episode>();
 }

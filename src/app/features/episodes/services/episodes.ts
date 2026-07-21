@@ -11,7 +11,7 @@ import { ApiResponse } from '../../../shared/types/api-response.types';
 export class EpisodesService {
   private readonly http = inject(HttpClient);
   private episodes = signal<Episode[]>([]);
-  readonly characterSignal = this.episodes.asReadonly();
+  readonly episodeSignal = this.episodes.asReadonly();
   readonly url = 'https://rickandmortyapi.com/api/episode/';
 
     getEpisodesFromService(page: number = 1): Observable<ApiResponse<Episode[]>> {
