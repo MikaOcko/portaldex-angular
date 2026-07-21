@@ -9,7 +9,54 @@
   <!-- Content -->
   <div class="relative flex flex-1 flex-col p-6">
     <p class="mt-1 mb-3 text-sm uppercase tracking-[0.25em] text-green-300">
-      Location {{ location().name }}
+      Location
     </p>
+
+	<!-- Name -->
+    <div class="flex items-center justify-between mb-1">
+        <span class="text-slate-400">
+          Title
+        </span>
+
+        <span class="font-semibold text-white mb-1">
+          {{ location().name }}
+        </span>
+    </div>
+
+	<!-- Type -->
+    <div class="flex items-center justify-between mb-1">
+        <span class="text-slate-400">
+          Type
+        </span>
+
+        <span class="font-semibold text-white mb-1">
+          {{ location().type }}
+        </span>
+    </div>
+
+	<!-- Dimension -->
+    <div class="flex items-center justify-between mb-1">
+        <span class="text-slate-400">
+          Dimension
+        </span>
+
+        <span class="font-semibold text-white mb-1">
+          {{ location().dimension }}
+        </span>
+    </div>
+    
+
+    <!-- Liste des résidents -->
+
+	<div class="flex flex-col mb-1">
+		<span class="text-slate-400">Residents</span>
+
+		@for (resident of residents; track resident.id) {
+			<span class="text-white">
+			{{ resident.name }}
+			</span>
+		}
+	</div>
+
   </div>
 </article>

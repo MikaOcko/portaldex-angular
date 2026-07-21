@@ -2,6 +2,7 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '../types/locations.type';
+import { Character } from '../../characters/types/character.type';
 import { ApiResponse } from '../../../shared/types/api-response.types';
 
 @Injectable({
@@ -27,4 +28,10 @@ export class LocationsService {
         params: { page: page },
       });
     }
+
+	getResidents(ids: string): Observable<Character[]> {
+  		return this.http.get<Character[]>(
+    		`https://rickandmortyapi.com/api/character/${ids}`
+  		);
+	}
 }
