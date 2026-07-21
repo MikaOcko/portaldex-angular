@@ -28,10 +28,4 @@ export class LocationsService {
         params: { page: page },
       });
     }
-
-	getResidents(ids: string): Observable<Character[]> {
-  		return this.http.get<Character[]>(
-    		`https://rickandmortyapi.com/api/character/${ids}`
-  		);
-	}
 }
