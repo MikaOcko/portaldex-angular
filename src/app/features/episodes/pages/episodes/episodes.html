@@ -27,12 +27,12 @@
       </h1>
 
       <p class="mx-auto mt-6 max-w-2xl text-lg text-slate-300">
-        Découvrez les épisodes des deux premières saisons de Rick et Morty.
+        Découvrez tous les épisodes de Rick et Morty.
       </p>
     </div>
 
     <!-- Cards -->
-    <!-- <app-pagination [currentPage]="currentPage()" [totalPages]="totalPage()" (changePage)="changePage($event)"/>-->
+    <app-pagination [currentPage]="currentPage()" [totalPages]="totalPage()" (changePage)="changePage($event)"/>
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
       @for(episode of episodes(); track episode.id) {
 
