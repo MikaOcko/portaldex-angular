@@ -26,4 +26,11 @@ export class CharactersService {
       params: { page: page },
     });
   }
+
+
+    getResidentsOfLocation(ids: string): Observable<Character | Character[]> {
+    return this.http.get<Character | Character[]>(
+      `https://rickandmortyapi.com/api/character/${ids}`
+    );
+  }
 }

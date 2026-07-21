@@ -1,7 +1,7 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { EpisodeCard } from '../../components/episode-card/episode-card';
 import { Pagination } from '../../components/pagination/pagination';
-import { EpisodesService } from '../../services/episodes';
+import { EpisodesService } from '../../services/episodes-service';
 import { ApiResponse, InfoResponse } from '../../../../shared/types/api-response.types';
 import { Episode } from '../../types/episodes.type';
 
