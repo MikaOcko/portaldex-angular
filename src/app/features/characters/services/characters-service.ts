@@ -1,6 +1,6 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, tap, map } from 'rxjs';
 import { Character } from '../types/character.type';
 import { ApiResponse } from '../../../shared/types/api-response.types';
 
@@ -33,4 +33,12 @@ export class CharactersService {
       `https://rickandmortyapi.com/api/character/${ids}`
     );
   }
+
+  	// Récupérer le nombre de la propriété "count" dans la partie info du retour de l'API
+	getCharacterCount(): Observable<number> {
+		return this.http.get<ApiResponse<Character[]>>(this.url).pipe(
+			map(response => response.info.count)
+		);
+	}
+
 }
