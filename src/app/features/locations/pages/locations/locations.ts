@@ -12,7 +12,7 @@ import { Location } from '../../types/locations.type';
   templateUrl: './locations.html',
   styleUrl: './locations.css',
 })
-export class Locations {
+export class Locations  implements OnInit{
   private readonly locationService = inject(LocationsService);
 	readonly locations = this.locationService.locationSignal;
 	readonly infos = signal<InfoResponse>({} as InfoResponse);
